@@ -23,6 +23,7 @@ public class SpellCheckService {
     private StringBloomFilter filter;
 
     public void init() throws InitializationException {
+        System.out.println(">>>> Initializing Word list <<<<");
         List<String> words = Collections.emptyList();
         try{
             words = FileReader.readFileIntoList(this.dictionaryPath);

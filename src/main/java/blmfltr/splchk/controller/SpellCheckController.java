@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 
 
@@ -20,16 +21,24 @@ public class SpellCheckController {
     @Autowired
     SpellCheckService spellCheckerService;
 
+    @PostConstruct
+    public void init(){
+        try {
+            spellCheckerService.init();
+        } catch(InitializationException exp){
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Filter initialization Failed",exp);
+        }
+
+    }
+
 
 
     @PostMapping(path = "/spellcheck", consumes = "application/json", produces = "application/json")
     public ArrayList<String> spellCheck(@RequestBody ArrayList<String> input){
         ArrayList<String> incorrectWords = null;
         try {
-            spellCheckerService.init();
+
             incorrectWords = spellCheckerService.spellCheck(input);
-        }catch(InitializationException exp){
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Filter initialization Failed",exp);
         }catch(ProcessingException exp){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error processing the words",exp);
         }

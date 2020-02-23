@@ -90,7 +90,7 @@ public class StringBloomFilter{
         int hash = 0;
         int powers = 1;
         for(int i = 0; i<input.length(); i++){
-            hash = (hash + (input.charAt(i) - 'a'+1) * powers)%sizeOfFilter;
+            hash = (hash + (input.charAt(i)+1) * powers)%sizeOfFilter;
             powers = (powers*HASH_FACTOR[index])%sizeOfFilter;
         }
         return hash;
