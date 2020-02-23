@@ -1,0 +1,37 @@
+.title {
+    color:darkslategray;
+    text-align: center;
+}
+.input{
+    text-align: center;
+}
+.wrapper{
+    text-align: center;
+}
+.output{
+    display: inline-block;
+    border: solid;
+    border-width: 1px;
+    margin-top: 40px;
+    width: 401px;
+    height: 200px;
+    overflow: auto;
+    border-radius: 5px;
+    border-color: coral;
+}
+#inp-data {
+    line-height: 35px;
+    font-size: 1em;
+    color: darkslategray;
+    border-radius: 10px;
+    border-color:coral;
+    padding-left: 10px;
+}
+
+li {
+    list-style-type: none;
+    font-size: 1.5em;
+    line-height: 1em;
+    list-style-type: none;
+    color: red;
+}
