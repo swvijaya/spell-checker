@@ -25,6 +25,7 @@ public class SpellCheckController {
 
 
     /**
+     * The post method that receives the list of words and returns the list of invalid words as determined byt he bloom filter
      *
      * @param input
      * @return
@@ -32,12 +33,14 @@ public class SpellCheckController {
     @PostMapping(path = "/spellcheck", consumes = "application/json", produces = "application/json")
     public ArrayList<String> spellCheck(@RequestBody ArrayList<String> input){
         ArrayList<String> incorrectWords = null;
+        System.out.println(input);
         try {
 
             incorrectWords = spellCheckerService.spellCheck(input);
         }catch(ProcessingException exp){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error processing the words",exp);
         }
+        System.out.println(incorrectWords);
         return incorrectWords;
     }
 
