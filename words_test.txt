@@ -1,7 +1,6 @@
 test
 west
 best
-jest
 nest
 lest
 next
