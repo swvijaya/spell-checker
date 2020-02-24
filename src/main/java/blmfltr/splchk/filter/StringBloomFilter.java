@@ -58,7 +58,7 @@ public abstract class StringBloomFilter implements BloomFilter {
     }
 
     /**
-     * Computes the size of the bit array with the formular:
+     * Computes the size of the bit array with the formula:
      * Absolute value of (No of strings to be added * ln(false positive Probability)) /(ln 2)^2
      *
      * @param falsePositiveProbability

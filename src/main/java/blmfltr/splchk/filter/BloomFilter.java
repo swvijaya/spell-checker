@@ -21,7 +21,7 @@ public interface BloomFilter{
     public void add(String input)  throws InitializationException;
 
     /**
-     * Method to check if datais present in the filter
+     * Method to check if data is present in the filter
      *
      * @param input
      * @return
